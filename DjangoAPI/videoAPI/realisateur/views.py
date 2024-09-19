@@ -1,21 +1,23 @@
 from .models import Realisateur
 from .serializers import *
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework import status
-from rest_framework.exceptions import NotFound
-from videoAPI.permissions import IsAdminUser, IsAuthenticatedNoDelete, IsReadOnly
-from rest_framework import generics
+from rest_framework import viewsets
 
 
-
-class RealisateurList(generics.ListCreateAPIView):
+class RealisateurViewSet(viewsets.ModelViewSet):
     queryset = Realisateur.objects.all()
     serializer_class = RealisateurSerializer
 
-class RealisateurDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Realisateur.objects.all()    
-    serializer_class = RealisateurSerializer
+# ------------------------------------------------------------------------------
+
+# class RealisateurList(generics.ListCreateAPIView):
+#     queryset = Realisateur.objects.all()
+#     serializer_class = RealisateurSerializer
+
+# class RealisateurDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Realisateur.objects.all()    
+#     serializer_class = RealisateurSerializer
+
+# ------------------------------------------------------------------------------
 
 # class RealisateurList(APIView):
 #     permission_classes = [IsAdminUser | IsAuthenticatedNoDelete | IsReadOnly]
